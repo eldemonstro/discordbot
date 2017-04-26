@@ -1,0 +1,23 @@
+{
+  "name": "discorddawnbot",
+  "version": "0.1.0",
+  "description": "A bot for discord (woohoo)",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eldemonstro/discordbot.git"
+  },
+  "keywords": [
+    "bot",
+    "discord"
+  ],
+  "author": "Fabricio Bezerra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eldemonstro/discordbot/issues"
+  },
+  "homepage": "https://github.com/eldemonstro/discordbot#readme"
+}
