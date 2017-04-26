@@ -1,13 +1,4 @@
-var config;
 const Discord = require("discord.js");
-
-if (process.env.NODE_ENV != "production") {
-    var config = require('./config.js');
-    var botAdmin = {
-        name: config.bot_admin_name,
-        id: config.bot_admin_id
-    };
-}
 
 var botAdmin = {
     name: process.env.bot_admin_name,
@@ -51,7 +42,7 @@ function killClient() {
     client.destroy();
 }
 
-client.login(process.env.token || config.token)
+client.login(process.env.token)
     .then(function (ret) {
         console.log("Bot logged suceffuly");
     })
