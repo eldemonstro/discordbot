@@ -52,3 +52,5 @@ client.login(token)
     .catch(function (err) {
         console.log(err);
     });
+
+console.log(token);
