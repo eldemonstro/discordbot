@@ -44,6 +44,8 @@ function killClient() {
     client.destroy();
 }
 
+console.log(token);
+
 client.login(token)
     .then(function (ret) {
         console.log("Bot logged suceffuly");
@@ -52,5 +54,3 @@ client.login(token)
     .catch(function (err) {
         console.log(err);
     });
-
-console.log(token);
