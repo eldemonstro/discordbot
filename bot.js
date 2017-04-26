@@ -6,8 +6,8 @@ if (process.env.NODE_ENV != "production") {
 }
 
 var botAdmin = {
-    name: config.bot_admin_name || process.env.bot_admin_name,
-    id: config.bot_admin_id || process.env.bot_admin_id
+    name: process.env.bot_admin_name || config.bot_admin_name,
+    id: process.env.bot_admin_id || config.bot_admin_id
 };
 
 const client = new Discord.Client();
@@ -47,7 +47,7 @@ function killClient() {
     client.destroy();
 }
 
-client.login(config.token || process.env.token)
+client.login(process.env.token || config.token)
     .then(function (ret) {
         console.log("Bot logged suceffuly");
     })
