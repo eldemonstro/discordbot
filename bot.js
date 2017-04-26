@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 
 var botAdmin = {
-    name: process.env.bot_admin_name,
-    id: process.env.bot_admin_id
+    name: process.env.BOT_ADMIN_NAME,
+    id: process.env.BOT_ADMIN_ID
 };
 
 var token = process.env.TOKEN;
@@ -44,12 +44,10 @@ function killClient() {
     client.destroy();
 }
 
-console.log(token);
-
 client.login(token)
     .then(function (ret) {
         console.log("Bot logged suceffuly");
-        console.log(process.env.message);
+        console.log(process.env.MESSAGE);
     })
     .catch(function (err) {
         console.log(err);
