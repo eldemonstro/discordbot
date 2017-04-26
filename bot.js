@@ -5,7 +5,7 @@ var botAdmin = {
     id: process.env.bot_admin_id
 };
 
-var token = process.env.token;
+var token = process.env.TOKEN;
 
 const client = new Discord.Client();
 
