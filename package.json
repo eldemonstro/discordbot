@@ -4,7 +4,8 @@
   "description": "A bot for discord (woohoo)",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/eldemonstro/discordbot/issues"
   },
-  "homepage": "https://github.com/eldemonstro/discordbot#readme"
+  "homepage": "https://github.com/eldemonstro/discordbot#readme",
+  "dependencies": {
+    "discord.js": "^11.0.0"
+  }
 }
