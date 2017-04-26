@@ -5,6 +5,8 @@ var botAdmin = {
     id: process.env.bot_admin_id
 };
 
+var token = process.env.token;
+
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -42,9 +44,10 @@ function killClient() {
     client.destroy();
 }
 
-client.login(process.env.token)
+client.login(token)
     .then(function (ret) {
         console.log("Bot logged suceffuly");
+        console.log(process.env.message);
     })
     .catch(function (err) {
         console.log(err);
