@@ -3,11 +3,15 @@ const Discord = require("discord.js");
 
 if (process.env.NODE_ENV != "production") {
     var config = require('./config.js');
+    var botAdmin = {
+        name: config.bot_admin_name,
+        id: config.bot_admin_id
+    };
 }
 
 var botAdmin = {
-    name: process.env.bot_admin_name || config.bot_admin_name,
-    id: process.env.bot_admin_id || config.bot_admin_id
+    name: process.env.bot_admin_name,
+    id: process.env.bot_admin_id
 };
 
 const client = new Discord.Client();
