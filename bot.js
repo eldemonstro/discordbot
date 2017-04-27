@@ -20,17 +20,32 @@ client.on('message', msg => {
         id: msg.author.id
     }
 
-    if (msg.content === 'ping') {
+    var msgContent = msg.content;
+
+    if (msgContent.toLocaleLowerCase() === 'ping') {
         console.log(msg);
         msg.reply('Pong!');
-    } else if (msg.content === 'die') {
+    } else if (msgContent.toLocaleLowerCase() === 'die') {
         validateUser(user, function () {
             msg.reply('Ded');
             console.log('Bot is dying');
             killClient();
         });
+    } else if (msgContent.toLocaleLowerCase() === 'flip a coin') {
+        flipACoin(function(coinSide){
+            if(coinSide) {
+                msg.reply('You got tails');
+            } else {
+                msg.reply('You got head');
+            }
+        });
     }
 });
+
+function flipACoin(callback){
+    var r = Math.floor((Math.random() * 100) + 1);
+    callback(r % 2 == 0);
+}
 
 function validateUser(user, callback) {
     if (user.name == botAdmin.name && user.id == botAdmin.id) {
