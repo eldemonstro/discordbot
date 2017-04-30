@@ -1,4 +1,6 @@
 const Discord = require("discord.js");
+var express = require('express');
+var app = express();
 
 var botAdmin = {
     name: process.env.BOT_ADMIN_NAME,
@@ -67,3 +69,11 @@ client.login(token)
     .catch(function (err) {
         console.log(err);
     });
+
+app.get('/', function(req, res) {
+    res.render('./public/index.html');
+});
+
+app.listen(process.env.PORT || 8080, function(){
+    console.log('Escutando em 8080');
+});
