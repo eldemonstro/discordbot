@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 var express = require('express');
 var app = express();
 
+
+
 var botAdmin = {
     name: process.env.BOT_ADMIN_NAME,
     id: process.env.BOT_ADMIN_ID
@@ -22,18 +24,18 @@ client.on('message', msg => {
         id: msg.author.id
     }
 
-    var msgContent = msg.content;
+    var msgContent = msg.content.toLocaleLowerCase();
 
-    if (msgContent.toLocaleLowerCase() === 'ping') {
+    if (msgContent === 'ping') {
         console.log(msg);
         msg.reply('Pong!');
-    } else if (msgContent.toLocaleLowerCase() === 'die') {
+    } else if (msgContent === 'die') {
         validateUser(user, function () {
             msg.reply('Ded');
             console.log('Bot is dying');
             killClient();
         });
-    } else if (msgContent.toLocaleLowerCase() === 'flip a coin') {
+    } else if (msgContent === 'flip a coin') {
         flipACoin(function(coinSide){
             if(coinSide) {
                 msg.reply('You got tails');
@@ -41,6 +43,8 @@ client.on('message', msg => {
                 msg.reply('You got head');
             }
         });
+    } else if (msgContent === 'help'){
+        msg.reply('You can see help in https://discorddawnbot.herokuapp.com/');
     }
 });
 
@@ -70,10 +74,12 @@ client.login(token)
         console.log(err);
     });
 
+app.set('view engine', 'ejs');
+
 app.get('/', function(req, res) {
-    res.render('./public/index.html');
+    res.render('index', {botName: client.user.username});
 });
 
 app.listen(process.env.PORT || 8080, function(){
-    console.log('Escutando em 8080');
+    console.log('Escutando em' + process.env.PORT);
 });
