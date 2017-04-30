@@ -74,12 +74,13 @@ client.login(token)
         console.log(err);
     });
 
+app.set('port', (process.env.PORT || 5000));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
     res.render('index', {botName: client.user.username});
 });
 
-app.listen(process.env.PORT || 8080, function(){
-    console.log('Escutando em' + process.env.PORT);
+app.listen(process.env.PORT || 5000, function(){
+    console.log('Escutando em ' + process.env.PORT);
 });

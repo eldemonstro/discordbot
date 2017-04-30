@@ -15,6 +15,9 @@
     "bot",
     "discord"
   ],
+  "engines": {
+    "node": "6.10.1"
+  },
   "author": "Fabricio Bezerra",
   "license": "ISC",
   "bugs": {
