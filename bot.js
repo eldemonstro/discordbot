@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 var express = require('express');
 var app = express();
 
-
+var botAdminContact;
 
 var botAdmin = {
     name: process.env.BOT_ADMIN_NAME,
@@ -15,6 +15,12 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.username}!`);
+    client.fetchUser(botAdmin.id)
+        .then(function (user) {
+            botAdminContact = user.username + '#' + user.discriminator;
+            console.log(botAdminContact);
+        })
+        .catch(console.error);
 });
 
 client.on('message', msg => {
@@ -36,19 +42,19 @@ client.on('message', msg => {
             killClient();
         });
     } else if (msgContent === 'flip a coin') {
-        flipACoin(function(coinSide){
-            if(coinSide) {
+        flipACoin(function (coinSide) {
+            if (coinSide) {
                 msg.reply('You got tails');
             } else {
                 msg.reply('You got head');
             }
         });
-    } else if (msgContent === 'help'){
+    } else if (msgContent === 'help') {
         msg.reply('You can see help in https://discorddawnbot.herokuapp.com/');
     }
 });
 
-function flipACoin(callback){
+function flipACoin(callback) {
     var r = Math.floor((Math.random() * 100) + 1);
     callback(r % 2 == 0);
 }
@@ -77,10 +83,13 @@ client.login(token)
 app.set('port', (process.env.PORT || 5000));
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res) {
-    res.render('index', {botName: client.user.username});
+app.get('/', function (req, res) {
+    res.render('index', {
+        botName: client.user.username,
+        botAdminContact: botAdminContact
+    });
 });
 
-app.listen(process.env.PORT || 5000, function(){
+app.listen(process.env.PORT || 5000, function () {
     console.log('Escutando em ' + process.env.PORT);
 });
